@@ -55,7 +55,6 @@
 </div>
 <!-- account -->
 
-@if(session()->has('cart') && count(session()->get('cart')) > 0)
     <!-- cart -->
     <div class="modal modal-right fade" id="cart_modal" tabindex="-1" role="dialog" aria-labelledby="cart_modal">
         <div class="modal-dialog modal-sm" role="document">
@@ -122,7 +121,7 @@
             </div>
         </div>
     </div>
-@endif
+
 <!-- cart -->
 
 
