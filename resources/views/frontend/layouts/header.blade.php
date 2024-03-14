@@ -37,8 +37,8 @@
                                                 $getCategory = App\Models\ProductCategory::getCategory();
                                             @endphp
 
-                                            @foreach($getCategory as $category)
-                                            <li class="active">
+                                            @foreach($getCategory as $key=>$category)
+                                            <li class="@if($key == 0)active @endif">
                                                 <a href="javascript:void(0);">
                                                     <div class="thumb">
                                                         <img src="{{ $category['image_url'] }}" alt="">
@@ -115,8 +115,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.4 14"><defs></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M4.6,11a1.5,1.5,0,1,0,0,3,1.5,1.5,0,1,0,0-3m0,2.3a.7.7,0,0,1-.8-.8.7.7,0,0,1,.8-.8.8.8,0,1,1,0,1.6"/><path class="cls-1" d="M10.9,11a1.5,1.5,0,1,0,0,3,1.5,1.5,0,0,0,0-3m0,2.3a.8.8,0,1,1,0-1.6.8.8,0,1,1,0,1.6"/><path class="cls-1" d="M14.3,2.2H3.2L2.9,1A1.5,1.5,0,0,0,1.5,0H.3A.3.3,0,0,0,0,.3C0,.5.1.7.3.7H1.5a.9.9,0,0,1,.8.6L4.4,7.6,4.2,8a1.6,1.6,0,0,0,.2,1.5,1.4,1.4,0,0,0,1.2.7h6.5c.2,0,.3-.2.3-.4a.3.3,0,0,0-.3-.3H5.6a.8.8,0,0,1-.7-.4,1.1,1.1,0,0,1-.1-.8L5,8l7-.7a1.9,1.9,0,0,0,1.6-1.4l.8-3.4a.4.4,0,0,0-.1-.3M12.9,5.7a1.1,1.1,0,0,1-1,.9L5,7.3,3.4,2.6l10.2.2Z"/></g></g></svg>
                         <div class="title">Cart</div>
                         <div class="items">
-                            <div class="total"><span class="jqueryTotalItem">{{ count(session()->get('cart')) }} </span> Items</div>
-                            <div class="price">₹ <span class="jqueryTotal">{{ calculateTotalPriceCart(session()->get('cart', [])) }}</span></div>
+                            <div class="total"><span class="jqueryTotalItem"> </span> Items</div>
+                            <div class="price">₹ <span class="jqueryTotal">0</span></div>
                         </div>
                     </a>
 

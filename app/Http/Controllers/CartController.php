@@ -49,13 +49,17 @@ class CartController extends Controller
         // Retrieve cart from session
         $cart = session()->get('cart', []);
 
+        
         // Remove product from cart
-        if ((isset($cart[$productId]) && $cart[$productId]['quantity'] == 1) || $request->removeAll == true) {
-            unset($cart[$productId]);
-        }
-        else{
-            $cart[$productId]['quantity']--;
-        }
+        
+            if ((isset($cart[$productId]) && $cart[$productId]['quantity'] == 1) || $request->removeAll === 'true') {
+                unset($cart[$productId]);
+            }
+            else{
+                $cart[$productId]['quantity']--;
+            }
+
+        
 
         // Store updated cart back into session
         session()->put('cart', $cart);

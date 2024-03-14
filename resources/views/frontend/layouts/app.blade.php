@@ -185,7 +185,8 @@
             $('#cartModal').html(html);
             $('.jqueryTotal').html(totalPrice);
             $('.jqueryTotalItem').html(itemCount);
-
+            
+            window.location.reload();
           }
 
      </script>

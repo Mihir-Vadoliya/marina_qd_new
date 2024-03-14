@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('content')
-
+    
     <section class="whatsyourmind | padding-top-main">
         <div class="container">
             <div class="row">
@@ -141,13 +141,20 @@
                 
                 <div class="col-md-3 products subcategory-{{ $product->sub_category_id }}">
                     <div class="productBox">
-                        <div class="thumb">
-                            <img src="{{ $product[0]['image_url'] ?? '' }}" alt="">
-                        </div>
+                        <a href="{{ route('productDetails', $product->id ) }}"class="thumb">
+                            @if (array_key_exists('imageUrls', $product->image_url)) 
+                                @foreach($product->image_url['imageUrls'] as $images)
+                                
+                                <div class="swiper-slide">
+                                    <img src="{{ $images }}" alt="">
+                                </div>
+                                @endforeach
+                            @endif
+                        </a>
                         <div class="details">
                             <h2>{{ $product->name }}</h2>
                             <div class="des">
-                                {{ substr($product->product_description, 0, 20) }}
+                                {!! substr($product->product_description, 0, 20) !!}
                             </div>
                             <ul class="tags">
                                 <li><strong>{{ $product->product_unit }}</strong></li>

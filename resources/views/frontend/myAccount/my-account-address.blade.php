@@ -8,15 +8,17 @@
                     <div class="row row-gap-4 mt-4">
                         <div class="col-md-6">
                             <h3 class="heading3">BILLING ADDRESS</h3>
+                            @if($userbillingdetails)
                             <p class="mt-3">
-                                {{ $userbillingdetails->company_name }}
+                                {{ $userbillingdetails->company_name?? '' }}
                                 <br>
-                                {{ $userbillingdetails->address }}
+                                {{ $userbillingdetails->address?? '' }}
                                 <br>
-                                {{ $userbillingdetails->city }}, 
-                                {{ $userbillingdetails->state }}
-                                {{ $userbillingdetails->pin_code }}
+                                {{ $userbillingdetails->city?? '' }}, 
+                                {{ $userbillingdetails->state?? '' }}
+                                {{ $userbillingdetails->pin_code?? '' }}
                             </p>
+                            @endif
                             <a href="{{ route('myaccount-billing-address-edit') }}">Edit</a>
                         </div>
                         <div class="col-md-6">

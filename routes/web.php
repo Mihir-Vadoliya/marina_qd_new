@@ -10,6 +10,7 @@ use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\UserAddressController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductDetailsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,12 +22,18 @@ use App\Http\Controllers\OrderController;
 |
 */
 
+Route::get('cache-clear',function(){ 
+    Artisan::call("optimize:clear"); 
+    return true;
+});
+
 Route::get('/admin', function () {
     return view('welcome');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/category/{id?}', [CategoryController::class, 'index'])->name('category');
+Route::get('/product/{id?}', [ProductDetailsController::class, 'index'])->name('productDetails');
 
 Route::post('/cart/add',  [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/remove',  [CartController::class, 'removeFromCart'])->name('cart.remove');
